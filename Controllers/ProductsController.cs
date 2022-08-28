@@ -1,21 +1,32 @@
 ﻿using MarketPlaceWeb.Models;
-using Microsoft.AspNetCore.Http;
+using MarketPlaceWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MarketPlaceWeb.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
+        private readonly string key = "1bY9lhxyhaiePLjBvJxf8h5bLCIUR_vJwxfzvJjy2IAw";
+        private readonly string link = @$"https://docs.google.com/feeds/";
+
+        private readonly HttpClient client = new HttpClient();
+        public ProductsController(ILogger<ProductsController> logger)
+        { }
+
+
         [HttpGet]
-        public IEnumerable<Product> Get(int sheet)
+        public IEnumerable<MarketSheet> Get()
         {
-            var products = new List<Product>();
-            products.AddRange(new[] {
-                new Product { Id = 1, Name = "Pepa", Description = "Some first discription", Price = 5.5f },
-                new Product() { Id = 2, Name = "Pepa", Description = "Some second discription", Price = 9.5f }});
-            return products;
+            var request = $"download/spreadsheets/Export?key={key}&exportFormat=xlsx";
+            client.BaseAddress = new Uri(link);
+            var responce = client.GetAsync(request, HttpCompletionOption.ResponseContentRead).Result;
+            var result = responce.Content.ReadAsByteArrayAsync().Result;
+            var excelBook = ExcelTransformer.TransformByteDataToExcel(result);
+            var marketSheets = new List<MarketSheet>();
+            
+            return marketSheets;
         }
     }
 }
