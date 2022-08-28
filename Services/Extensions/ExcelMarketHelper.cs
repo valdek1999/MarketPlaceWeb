@@ -3,134 +3,98 @@ using System.Globalization;
 
 namespace WebWeather.Extensions
 {
-
-    public static class ExcelWeatherHelper
+    public static class ExcelMarketHelper
     {
-        #region Парсеры ячеек в нужный тип
-        public static (bool IsParsed, DateTime Value) GetDateFromCell(this ICell cell)
+        public static bool CheckValid(this IRow row)
         {
-            return (DateTime.TryParseExact(cell.ToString().Trim(), "dd.MM.yyyy", new CultureInfo("ru-Ru"), DateTimeStyles.AssumeLocal, out var value), value);
+            try
+            {
+                if (row == null)
+                    return false;
+                var firstcell = row.GetCell(0);
+
+                if (firstcell.IsParsed())
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }            
         }
-        public static (bool IsParsed, DateTime Value) GetTimeFromCell(this ICell cell)
+        public static bool IsParsed(this ICell cell)
         {
-            var isParsed = DateTime.TryParseExact(cell.ToString().Trim(), "HH:mm", new CultureInfo("ru-Ru"), DateTimeStyles.AssumeLocal, out var value);
-            return (isParsed, value);
-        }
-        public static (bool isParsed, float? Value) GetFloatFromCell(this ICell cell)
-        {
-            var isParsed = float.TryParse(cell.ToString().Trim(), out float value);
-            if (isParsed)
+            var isParsed = true;
+            if (string.IsNullOrEmpty(cell?.ToString()?.Trim() ?? ""))
             {
-                return (isParsed, value);
+                isParsed = false;
             }
-            else
-            {
-                return (isParsed, null);
-            }
-        }
-        public static (bool isParsed, int? Value) GetIntFromCell(this ICell cell)
-        {
-            var isParsed = int.TryParse(cell.ToString().Trim(), out int value);
-            if (isParsed)
-            {
-                return (isParsed, value);
-            }
-            else
-            {
-                return (isParsed, null);
-            }
+            return isParsed;
         }
         public static (bool isParsed, string Value) GetStringFromCell(this ICell cell)
         {
-            return (true, cell.ToString().Trim());
+            try
+            {
+                var isParsed = true;
+                if (string.IsNullOrEmpty(cell.ToString()?.Trim() ?? ""))
+                {
+                    isParsed = false;
+                }
+                try
+                {
+                    if (cell.CachedFormulaResultType == CellType.Numeric)
+                    {
+                        return (isParsed, cell.NumericCellValue.ToString());
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+                if (cell.CellType == CellType.Formula)
+                {
+                    return (isParsed, cell.RichStringCellValue.ToString() ?? "");
+                }
+                if (cell.CellType == CellType.Error)
+                {
+                    return (isParsed, cell.RichStringCellValue.ToString() ?? "");
+                }
+                if (cell.CellType == CellType.Numeric)
+                {
+                    return (isParsed, cell.NumericCellValue.ToString());
+                }
+                if (cell.CellType == CellType.String)
+                {
+                    return (isParsed, cell.RichStringCellValue.ToString() ?? "");
+                }
+                return (isParsed, cell.ToString()?.Trim() ?? "");
+            }
+            catch(Exception ex)
+            {
+                return (true, cell.ToString()?.Trim() ?? "");
+            }
         }
 
-        #endregion
-
-        #region Проверка на валидность
-
-        ///// <summary>
-        ///// Проверка на валидность строки
-        ///// </summary>
-        ///// <param name="row"></param>
-        ///// <returns></returns>
-        //public static bool CheckValid(this IRow row)
-        //{
-        //    var cellTypes = Enum.GetValues<WeatherCell>();
-        //    foreach (var cellType in cellTypes)
-        //    {
-        //        if (row.Cells.Count <= (int)cellType)
-        //        {
-        //            return true;
-        //        }
-        //        var cell = row.GetCellFromRowByType(cellType);
-        //        if (cell.CheckValid(cellType) is false)
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    return true;
-        //}
-
-        ///// <summary>
-        ///// Проверка на валидность ячейки
-        ///// </summary>
-        ///// <param name="cell"></param>
-        ///// <param name="cellType"></param>
-        ///// <returns></returns>
-        //public static bool CheckValid(this ICell cell, WeatherCell cellType)
-        //{
-        //    switch (cellType)
-        //    {
-        //        case WeatherCell.Date:
-        //            return DateTime.TryParseExact(cell.ToString().Trim(), "dd.MM.yyyy", new CultureInfo("ru-Ru"), DateTimeStyles.AssumeLocal, out _);
-        //        case WeatherCell.Time:
-        //            return DateTime.TryParseExact(cell.ToString().Trim(), "H:m", new CultureInfo("ru-Ru"), DateTimeStyles.AssumeLocal, out var _);
-        //        case WeatherCell.AirTemperature:
-        //        case WeatherCell.DewPointTemperature:
-        //        case WeatherCell.AirHumidity:
-        //            return float.TryParse(cell.ToString(), out _);
-        //        case WeatherCell.AtmosphericPressure:
-        //            return int.TryParse(cell.ToString(), out _);
-        //        case WeatherCell.WindSpeed:
-        //        case WeatherCell.Cloudiness:
-        //            if (string.IsNullOrEmpty(cell.ToString().Replace(" ", "")) || cell.CellType == CellType.Blank)
-        //            {
-        //                return true;
-        //            }
-        //            else
-        //            {
-        //                return int.TryParse(cell.ToString(), out _);
-        //            }
-        //        case WeatherCell.LowerCloudinessLimit:
-        //            if (string.IsNullOrEmpty(cell.ToString().Replace(" ", "")) || cell.CellType == CellType.Blank)
-        //            {
-        //                return true;
-        //            }
-        //            else
-        //            {
-        //                return float.TryParse(cell.ToString(), out _);
-        //            }
-        //        case WeatherCell.WindDirection:
-        //        case WeatherCell.WeatherEvent:
-        //        case WeatherCell.HorizontalVisibility:
-        //            return true;
-        //        default:
-        //            return true;
-        //    }
-        //}
-
-        //#endregion
-
-        ///// <summary>
-        ///// Получение ячейки из строки по типу ячейки
-        ///// </summary>
-        ///// <param name="row"></param>
-        ///// <param name="weatherCellType"></param>
-        ///// <returns></returns>
-        //public static ICell GetCellFromRowByType(this IRow row, WeatherCell weatherCellType)
-        //{
-        //    return row.GetCell((int)weatherCellType);
-        //}
+        public static List<string> GetAllCellFromRow(this IRow row, int orderSheet)
+        {
+            var countCells = 0;
+            if(orderSheet == 0)
+            {
+                countCells = 7;
+            }
+            if(orderSheet == 1)
+            {
+                countCells = 11;
+            }
+            if(orderSheet == 2)
+            {
+                countCells = 5;
+            }
+            return row.Cells
+                      .GetRange(0, countCells)
+                      .Select(x=>x.GetStringFromCell().Value)
+                      .ToList();
+        }
     }
 }

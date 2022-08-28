@@ -1,6 +1,6 @@
 ﻿namespace MarketPlaceWeb.Models
 {
-    public class ProductAvito
+    public class ProductDeliver: Product
     {
         /// <summary>
         /// Хешрейт

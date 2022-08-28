@@ -11,6 +11,10 @@
         /// </summary>
         public string? State { get; set; }
         /// <summary>
+        /// Кол-во в наличии, шт.
+        /// </summary>
+        public string? Count { get; set; }        
+        /// <summary>
         /// Прайс, руб
         /// </summary>
         public string? PriceRub { get; set; }
