@@ -20,6 +20,10 @@ namespace MarketPlaceWeb.Controllers
         [HttpGet]
         public Market Get()
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            Response.Headers.Add("Access-Control-Allow-Methods", "GET");
+            Response.Headers.Add("Access-Control-Allow-Credentials", "true");
+
             var request = $"download/spreadsheets/Export?key={key}&exportFormat=xlsx";
             client.BaseAddress = new Uri(link);
             var responce = client.GetAsync(request, HttpCompletionOption.ResponseContentRead).Result;
