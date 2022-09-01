@@ -4,11 +4,11 @@ import { AllProductPanelComponent } from "./components/site-content/all-product-
 import { CounterComponent } from "./components/site-content/counter/counter.component";
 import { FetchDataComponent } from "./components/site-content/fetch-data/fetch-data.component";
 import { HomeComponent } from "./components/site-content/home/home.component";
-import { LayoutComponent } from "./components/layout/layout.component";
+import { MainLayoutComponent } from "./components/main-layout/main.layout.component";
 
 const routes: Routes = [{
   path: '',
-  component: LayoutComponent,
+  component: MainLayoutComponent,
   children: [{
     path: '',
     component: HomeComponent

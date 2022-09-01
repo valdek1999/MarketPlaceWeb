@@ -30,8 +30,8 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
+    <None Remove="ClientApp\src\app\components\main-layout\main.layout.module.ts" />
     <None Remove="ClientApp\src\app\components\shared\shared.module.ts" />
-    <None Remove="ClientApp\src\app\components\layout\layout.module.ts" />
     <None Remove="ClientApp\src\material.module.ts" />
   </ItemGroup>
 
