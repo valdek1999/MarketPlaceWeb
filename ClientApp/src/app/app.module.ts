@@ -11,21 +11,21 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MainLayoutModule } from './components/main-layout/main.layout.module';
 
 @NgModule({
-  declarations: [
-    AppComponent    
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    AppRoutingModule,    
-    BrowserAnimationsModule,
-    MainLayoutModule,
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		MainLayoutModule,
 
-    MaterialModule,
-    FormsModule,
-    HttpClientModule,
-    LayoutModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+		MaterialModule,
+		FormsModule,
+		HttpClientModule,
+		LayoutModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
