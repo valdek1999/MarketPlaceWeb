@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Market, MarketService} from "../market.service";
+import {Market, MarketService} from "../services/market-service/market.service";
 
 @Component({
   selector: 'app-fetch-data',
