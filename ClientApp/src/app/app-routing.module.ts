@@ -1,34 +1,33 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { DefaultComponent } from "./layouts/default/default.component";
-import { DashboardComponent } from "./modules/dashboard/dashboard.component";
-import { PostsComponent } from "./modules/posts/posts.component";
-import { SendContractsComponent } from "./modules/send-contracts/send-contracts.component";
-import { SendContractComponent } from "./modules/send-contract/send-contract.component";
-import { ManageConsentsComponent } from "./modules/manage-consents/manage-consents.component";
+import { AllProductPanelComponent } from "./components/site-content/all-product-panel/all-product-panel.component";
+import { CounterComponent } from "./components/site-content/counter/counter.component";
+import { FetchDataComponent } from "./components/site-content/fetch-data/fetch-data.component";
+import { HomeComponent } from "./components/site-content/home/home.component";
+import { LayoutComponent } from "./components/layout/layout.component";
 
 const routes: Routes = [{
   path: '',
-  component: DefaultComponent,
+  component: LayoutComponent,
   children: [{
     path: '',
-    component: DashboardComponent
+    component: HomeComponent
   },
   {
-    path: 'posts',
-    component: PostsComponent
+    path: 'home',
+    component: HomeComponent
+  },
+    {
+      path: 'all-product-panel',
+      component: AllProductPanelComponent
   },
   {
-    path: 'send-contracts',
-    component: SendContractsComponent
+    path: 'counter',
+    component: CounterComponent
   },
   {
-    path: 'send-contract',
-    component: SendContractComponent
-  },
-  {
-    path: 'manage-consents',
-    component: ManageConsentsComponent
+    path: 'fetch-data',
+    component: FetchDataComponent
   }
   ]
 }];

@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '../shared/shared.module';
+//import { MatSidenavModule } from '@angular/material/sidenav';
+//import { MatDividerModule } from '@angular/material/divider';
+//import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from "../../../material.module";
@@ -19,16 +19,17 @@ import { LayoutComponent } from './layout.component';
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule,
-    MatSidenavModule,
-    MatDividerModule,
-    FlexLayoutModule,
-    MatCardModule,
+    SharedModule,    
+    FlexLayoutModule,    
     MaterialModule,
     FormsModule
+    //MatSidenavModule,
+    //MatDividerModule,
+    //MatCardModule,
   ],
   providers: [
-    DashboardService
+    
   ]
 })
+
 export class DefaultModule { }
