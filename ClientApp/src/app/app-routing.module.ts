@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AllProductPanelComponent } from "./components/site-content/all-product-panel/all-product-panel.component";
+import { AllProductPanelComponent } from "./components/site-content/market/all-market-items/all-market-items.component";
 import { CounterComponent } from "./components/site-content/counter/counter.component";
 import { FetchDataComponent } from "./components/site-content/fetch-data/fetch-data.component";
 import { HomeComponent } from "./components/site-content/home/home.component";

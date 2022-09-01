@@ -10,8 +10,8 @@ import { MainLayoutComponent } from './main.layout.component';
 import { HomeComponent } from '../site-content/home/home.component';
 import { CounterComponent } from '../site-content/counter/counter.component';
 import { FetchDataComponent } from '../site-content/fetch-data/fetch-data.component';
-import { AllProductPanelComponent } from '../site-content/all-product-panel/all-product-panel.component';
-import { ProductService } from '../../services/product-service/product.service';
+import { AllProductPanelComponent } from '../site-content/market/all-market-items/all-market-items.component';
+import { MarketService } from '../../services/market-service/market.service';
 
 //import { MatSidenavModule } from '@angular/material/sidenav';
 //import { MatDividerModule } from '@angular/material/divider';
@@ -19,11 +19,11 @@ import { ProductService } from '../../services/product-service/product.service';
 
 @NgModule({
 	declarations: [
-    MainLayoutComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
-    AllProductPanelComponent
+		MainLayoutComponent,
+		HomeComponent,
+		CounterComponent,
+		FetchDataComponent,
+		AllProductPanelComponent
 	],
 	imports: [
 		CommonModule,
@@ -36,8 +36,8 @@ import { ProductService } from '../../services/product-service/product.service';
 		//MatDividerModule,
 		//MatCardModule,
 	],
-  providers: [
-    ProductService
+	providers: [
+		MarketService
 	]
 })
 
