@@ -8,6 +8,8 @@
     <SpaProxyServerUrl>https://localhost:44400</SpaProxyServerUrl>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <ImplicitUsings>enable</ImplicitUsings>
+	<TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
+	<TypeScriptEmitDecoratorMetadata>True</TypeScriptEmitDecoratorMetadata>
   </PropertyGroup>
 
   <ItemGroup>
