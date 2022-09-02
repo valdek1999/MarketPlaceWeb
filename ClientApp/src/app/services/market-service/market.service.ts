@@ -24,34 +24,34 @@ export class MarketService {
 	GetMarketTestModel() {
 		var deliver: MarketProductDeliver = {
 			Id: 1,
-			Name: "",
+			Name: "Главный доставщик",
 			Products: [
 				{
-					HashRate: "",
-					State: "",
-					PriceRub: "",
-					PriceUsd: "",
-					PriceTh: "",
-					PriceRelevance: ""
+					HashRate: "999",
+					State: "Везет",
+					PriceRub: "200",
+					PriceUsd: "20",
+					PriceTh: "10",
+					PriceRelevance: "66"
 				},
 				{
-					HashRate: "",
-					State: "",
-					PriceRub: "",
-					PriceUsd: "",
-					PriceTh: "",
-					PriceRelevance: ""
+					HashRate: "888",
+					State: "Везет",
+					PriceRub: "300",
+					PriceUsd: "30",
+					PriceTh: "20",
+					PriceRelevance: "77"
 				},
 				{
-					HashRate: "",
-					State: "",
-					PriceRub: "",
-					PriceUsd: "",
-					PriceTh: "",
-					PriceRelevance: ""
+					HashRate: "777",
+					State: "Везет",
+					PriceRub: "400",
+					PriceUsd: "40",
+					PriceTh: "30",
+					PriceRelevance: "88"
 				}
 			],
-			AdditionalInformation: ""
+			AdditionalInformation: "Выполняет годовой план за неделю"
 		} as MarketProductDeliver;
 
 		var products: MarketProductInStock = {

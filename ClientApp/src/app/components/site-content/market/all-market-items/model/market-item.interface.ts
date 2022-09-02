@@ -20,7 +20,7 @@ export interface PagesLinksData {
 	last: string;
 }
 
-export interface ProductItemsPageable {
+export interface MarketItemsPageable {
 	items: MarketItem[];
 	meta: PaginationData;
 	links: PagesLinksData;
