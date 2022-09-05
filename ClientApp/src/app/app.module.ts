@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MainLayoutModule } from './components/main-layout/main.layout.module';
+import { WINDOW_PROVIDERS } from './services/window-service/window.service';
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,9 @@ import { MainLayoutModule } from './components/main-layout/main.layout.module';
 		HttpClientModule,
 		LayoutModule
 	],
-	providers: [],
+	providers: [
+		WINDOW_PROVIDERS
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
