@@ -13,9 +13,6 @@ export class MarketService {
     this.http.get<Market>('https://localhost:7000/' + 'products').subscribe(market => {
         console.log(market);
         this.market = market;
-      },
-      error => {
-        console.error(error);
       });
     return this.market;
   }

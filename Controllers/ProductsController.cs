@@ -11,7 +11,7 @@ namespace MarketPlaceWeb.Controllers
     {
         private readonly string key = "1bY9lhxyhaiePLjBvJxf8h5bLCIUR_vJwxfzvJjy2IAw";
         private readonly string link = @$"https://docs.google.com/feeds/";
-        private (Market data, DateTime time) cache = (null, DateTime.MinValue);
+        private static (Market data, DateTime time) cache = (null, DateTime.MinValue);
         private readonly HttpClient client = new HttpClient();
         public ProductsController(ILogger<ProductsController> logger)
         { }
@@ -24,6 +24,11 @@ namespace MarketPlaceWeb.Controllers
             Response.Headers.Add("Access-Control-Allow-Methods", "GET");
             Response.Headers.Add("Access-Control-Allow-Credentials", "true");
 
+            if (cache.data is not null && cache.time > DateTime.Now.AddMinutes(-10))
+            {
+                return cache.data;
+            }
+
             var request = $"download/spreadsheets/Export?key={key}&exportFormat=xlsx";
             client.BaseAddress = new Uri(link);
             var responce = client.GetAsync(request, HttpCompletionOption.ResponseContentRead).Result;
@@ -35,10 +40,6 @@ namespace MarketPlaceWeb.Controllers
 
         public Market GetMarketSheets(byte[] data)
         {
-            if(cache.data is not null && cache.time > DateTime.Now.AddMinutes(-10))
-            {
-                return cache.data;
-            }
             var excelBook = ExcelTransformer.TransformByteDataToExcel(data);
             var market = new Market();
             for (int i = 0; i < excelBook.NumberOfSheets; i++)
@@ -110,6 +111,7 @@ namespace MarketPlaceWeb.Controllers
                 }
 
             }
+            cache = (market, DateTime.Now);
             return market;
         }
 

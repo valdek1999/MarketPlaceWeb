@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "MarketPlaceWeb"
+  "defaultProject": "MarketPlaceWeb",
+  "cli": {
+    "analytics": "a02e04b9-ac5e-41f4-8919-53786b66283a"
+  }
 }
