@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Market, MarketService, RepairParts} from "../market.service";
 
 @Component({
@@ -8,15 +8,19 @@ import {Market, MarketService, RepairParts} from "../market.service";
 export class HomeComponent implements OnInit, OnChanges{
   market!: Market
 
-  products!: RepairParts[];
+  @Input() products!: RepairParts[];
 
   constructor(private marketService: MarketService){
 
   }
 
   ngOnInit(): void {
-    this.market = this.marketService.GetMarketModel()!;
-    this.products = this.market.MarketRepairParts.Products;
+    this.marketService.GetMarketModel().subscribe(market =>{
+      this.market = market
+      if(this.market != null){
+        this.products = this.market.marketRepairParts.products;
+      }
+    });
   }
 
   ngOnChanges(): void {

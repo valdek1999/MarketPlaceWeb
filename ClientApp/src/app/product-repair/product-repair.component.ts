@@ -7,7 +7,7 @@ import {RepairParts} from "../market.service";
   styleUrls: ['./product-repair.component.css']
 })
 export class ProductRepairComponent implements OnInit {
-  @Input() repairParts: RepairParts | undefined;
+  @Input() repairParts!: RepairParts;
 
   constructor() { }
 

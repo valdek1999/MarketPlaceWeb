@@ -1,33 +1,29 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarketService {
-  public market: Market | undefined;
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl:string) {
   }
 
   GetMarketModel(){
-    this.http.get<Market>('https://localhost:7000/' + 'products').subscribe(market => {
-        console.log(market);
-        this.market = market;
-      });
-    return this.market;
+      return this.http.get<Market>('https://localhost:7000/' + 'products')
   }
 }
 
 export interface Market {
-  "Name":string,
-  "Description":string,
-  "UsdRate":string,
-  "GoogleUsdRate":string,
-  "MiningProfitability":string,
-  "ElectricityСost":string
-  "MarketProductDeliver": MarketProductDeliver
-  "MarketProductInStock": MarketProductInStock
-  "MarketRepairParts": MarketRepairParts
+  "name":string,
+  "description":string,
+  "usdRate":string,
+  "googleUsdRate":string,
+  "miningProfitability":string,
+  "electricityСost":string
+  "marketProductDeliver": MarketProductDeliver
+  "marketProductInStock": MarketProductInStock
+  "marketRepairParts": MarketRepairParts
 }
 
 export interface MarketProductDeliver{
@@ -43,16 +39,16 @@ export interface MarketProductInStock{
   "AdditionalInformation":string
 }
 export interface MarketRepairParts{
-  "Id":number,
-  "Name":string,
-  "Products":RepairParts[],
-  "AdditionalInformation":string
+  "id":number,
+  "name":string,
+  "products":RepairParts[],
+  "additionalInformation":string
 }
 
 export interface Product {
-  "Id":number,
-  "Name":string,
-  "Description":string
+  "id":number,
+  "name":string,
+  "description":string
 }
 export interface ProductDeliver extends Product{
   "HashRate":string,
@@ -76,8 +72,8 @@ export interface ProductInStock extends Product{
   "PaybackPeriod":string,
 }
 export interface RepairParts extends Product{
-  "Count":string,
-  "State":string,
-  "PriceRub":string,
-  "Location":string,
+  "count":string,
+  "state":string,
+  "priceRub":string,
+  "location":string,
 }
