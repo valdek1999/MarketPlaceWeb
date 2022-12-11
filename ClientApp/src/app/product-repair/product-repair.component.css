@@ -1,8 +1,18 @@
 .example-card {
-  max-width: 400px;
+  max-width: 100%;
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('https://cdn.dribbble.com/users/900374/screenshots/5315324/gpu_mining_2_1x.gif');
   background-size: cover;
+}
+
+.product-content{
+  display: flex;
+}
+
+.price-div{
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
 }

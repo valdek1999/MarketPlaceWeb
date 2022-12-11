@@ -1,29 +1,25 @@
-<p>Id:{{repairParts.id}}</p>
-<p>Name:{{repairParts.name}}</p>
-<p>Count:{{repairParts.count}}</p>
-<p>PriceRub:{{repairParts.priceRub}}</p>
-<p>Description:{{repairParts.description}}</p>
-<button mat-raised-button color="warn" aria-label="Example icon button with a home icon">
-  Перейти к товару<mat-icon>zoom_in</mat-icon>
-</button>
+
+
 
 
 <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-title>{{repairParts.name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="https://cdn.dribbble.com/users/900374/screenshots/5315324/gpu_mining_2_1x.gif" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
+  <!--<img mat-card-image src="https://cdn.dribbble.com/users/900374/screenshots/5315324/gpu_mining_2_1x.gif" alt="Photo of a Shiba Inu">-->
+ <mat-card-content>
+   <mat-chip-list aria-label="Fish selection">
+     <mat-chip>В наличии шт: {{repairParts.count}}</mat-chip>
+     <mat-chip color="primary" selected>Отгрузка: {{repairParts.location}}</mat-chip>
+     <mat-chip class="item">Цена: {{repairParts.priceRub}}₽</mat-chip>
+   </mat-chip-list>
+ </mat-card-content>
+  <!--<mat-card-actions>
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>
+    <button mat-raised-button color="warn" aria-label="Example icon button with a home icon">
+      Перейти к товару<mat-icon>zoom_in</mat-icon>
+    </button>
+  </mat-card-actions>-->
+ </mat-card>

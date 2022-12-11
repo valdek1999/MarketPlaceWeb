@@ -17,6 +17,8 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatButton} from "@angular/material/button";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import {MatButton} from "@angular/material/button";
     BrowserAnimationsModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
