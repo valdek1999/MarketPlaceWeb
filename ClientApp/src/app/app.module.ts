@@ -13,6 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductDeliverComponent } from './product-deliver/product-deliver.component';
 import { ProductInStockComponent } from './product-in-stock/product-in-stock.component';
 import { ProductRepairComponent } from './product-repair/product-repair.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatButton} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -25,17 +29,20 @@ import { ProductRepairComponent } from './product-repair/product-repair.componen
     ProductInStockComponent,
     ProductRepairComponent
   ],
-    imports: [
-        BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
-        HttpClientModule,
-        FormsModule,
-        RouterModule.forRoot([
-            {path: '', component: HomeComponent, pathMatch: 'full'},
-            {path: 'counter', component: CounterComponent},
-            {path: 'fetch-data', component: FetchDataComponent},
-        ]),
-        BrowserAnimationsModule
-    ],
+  imports: [
+    BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot([
+      {path: '', component: HomeComponent, pathMatch: 'full'},
+      {path: 'counter', component: CounterComponent},
+      {path: 'fetch-data', component: FetchDataComponent},
+    ]),
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
