@@ -1,0 +1,30 @@
+.card {
+  max-width: 400px;
+}
+
+.header-image {
+  background-image: url('https://cdn.dribbble.com/users/900374/screenshots/5315324/gpu_mining_2_1x.gif');
+  background-size: cover;
+}
+
+.product-content {
+  display: flex;
+}
+
+.price-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.mat-chip{
+  width: max-content !important;
+}
+
+.pay_button{
+  width: 100%;
+}
+
+.size_name{
+  height: 59px;
+}

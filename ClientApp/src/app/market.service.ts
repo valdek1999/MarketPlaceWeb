@@ -12,6 +12,8 @@ export class MarketService {
   GetMarketModel(){
       return this.http.get<Market>('https://localhost:7000/' + 'products')
   }
+
+
 }
 
 export interface Market {
@@ -27,16 +29,16 @@ export interface Market {
 }
 
 export interface MarketProductDeliver{
-  "Id":number,
-  "Name":string,
-  "Products":ProductDeliver[],
-  "AdditionalInformation":string
+  "id":number,
+  "name":string,
+  "products":ProductDeliver[],
+  "additionalInformation":string
 }
 export interface MarketProductInStock{
-  "Id":number,
-  "Name":string,
-  "Products":ProductInStock[],
-  "AdditionalInformation":string
+  "id":number,
+  "name":string,
+  "products":ProductInStock[],
+  "additionalInformation":string
 }
 export interface MarketRepairParts{
   "id":number,
@@ -51,25 +53,25 @@ export interface Product {
   "description":string
 }
 export interface ProductDeliver extends Product{
-  "HashRate":string,
-  "State":string,
-  "PriceRub":string,
-  "PriceUsd":string,
-  "PriceTh":string,
-  "PriceRelevance":string
+  "hashRate":string,
+  "state":string,
+  "priceRub":string,
+  "priceUsd":string,
+  "priceTh":string,
+  "priceRelevance":string
 }
 
 export interface ProductInStock extends Product{
-  "HashRate":string,
-  "State":string,
-  "Count":string,
-  "PriceRub":string,
-  "Location":string,
-  "Power":string,
-  "ElectricityСosts":string,
-  "Profitability":string,
-  "Earnings":string,
-  "PaybackPeriod":string,
+  "hashRate":string,
+  "state":string,
+  "count":string,
+  "priceRub":string,
+  "location":string,
+  "power":string,
+  "electricityСosts":string,
+  "profitability":string,
+  "earnings":string,
+  "paybackPeriod":string,
 }
 export interface RepairParts extends Product{
   "count":string,

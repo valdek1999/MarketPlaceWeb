@@ -1,1 +1,21 @@
-<p>product-in-stock works!</p>
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <div class="size_name">
+      <mat-card-title>{{GetNormalString(productInStock.name)}}</mat-card-title>
+    </div>
+  </mat-card-header>
+  <img mat-card-image src="https://cdn.dribbble.com/users/900374/screenshots/5315324/gpu_mining_2_1x.gif" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <mat-chip-list class="mat-chip-list-stacked" aria-label="Fish selection">
+      <mat-chip>В наличии шт: {{productInStock.count}}</mat-chip>
+      <mat-chip color="primary">Отгрузка: {{productInStock.location}}</mat-chip>
+      <mat-chip>Цена: {{productInStock.priceRub}}₽</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="warn" class = "pay_button" aria-label="Example icon button with a home icon">
+      Перейти к товару
+    </button>
+  </mat-card-actions>
+</mat-card>

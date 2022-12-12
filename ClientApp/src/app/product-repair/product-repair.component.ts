@@ -19,4 +19,7 @@ export class ProductRepairComponent implements OnInit {
   ngOnChanges(): void {
   }
 
+  GetNormalString(value:string){
+    return value
+  }
 }

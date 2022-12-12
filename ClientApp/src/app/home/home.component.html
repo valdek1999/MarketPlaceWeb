@@ -1,7 +1,8 @@
-<div>
-  <div *ngFor="let product of currentProducts">
-    <app-product-repair [repairParts]="product"></app-product-repair>
+<div class="box">
+  <div class="cards" >
+    <app-product-deliver *ngFor="let product of currentProducts" [productDeliver]="product"></app-product-deliver>
   </div>
+
 
   <mat-paginator *ngIf="currentProducts.length > 0" (page)="updatePage($event)" [length]="products.length"
                  [pageSize]="currentPageSize"
