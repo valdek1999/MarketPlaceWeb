@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Market, MarketProductDeliver, MarketService, ProductDeliver, ProductInStock} from "../market.service";
+import {Market, MarketService, ProductDeliver, ProductInStock} from "../market.service";
 import {PageEvent} from "@angular/material/paginator";
 
 @Component({
@@ -39,7 +39,7 @@ export class CounterComponent implements OnInit, OnChanges{
     }
   }
 
-  updateCurrentProducts():void{
+  updateCurrentProducts(){
     var start = (this.currentPage-1)*this.currentPageSize
     var end = start + this.currentPageSize
     if(end > this.products.length){
