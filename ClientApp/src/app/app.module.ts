@@ -19,6 +19,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatButton} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { DeliverModalComponent } from './counter/deliver-modal/deliver-modal.component';
+import {Dialog, DIALOG_DATA} from "@angular/cdk/dialog";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -29,25 +33,28 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     FetchDataComponent,
     ProductDeliverComponent,
     ProductInStockComponent,
-    ProductRepairComponent
+    ProductRepairComponent,
+    DeliverModalComponent
   ],
-  imports: [
-    BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      {path: '', component: HomeComponent, pathMatch: 'full'},
-      {path: 'counter', component: CounterComponent},
-      {path: 'fetch-data', component: FetchDataComponent},
-    ]),
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatChipsModule,
-    MatPaginatorModule
-  ],
-  providers: [],
+    imports: [
+        BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
+        HttpClientModule,
+        FormsModule,
+        RouterModule.forRoot([
+            {path: '', component: HomeComponent, pathMatch: 'full'},
+            {path: 'counter', component: CounterComponent},
+            {path: 'fetch-data', component: FetchDataComponent},
+        ]),
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatChipsModule,
+        MatPaginatorModule,
+        MatProgressSpinnerModule,
+        MatDialogModule
+    ],
+  providers: [Dialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

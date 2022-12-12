@@ -1,3 +1,10 @@
+<mat-progress-spinner *ngIf="currentProducts.length <= 0"
+                      class="center-me"
+                      color="accent"
+                      mode="indeterminate"
+                      [value]="30">
+</mat-progress-spinner>
+
 <div class = "box">
   <div class="cards">
     <app-product-in-stock *ngFor="let product of currentProducts" [productInStock]="product"></app-product-in-stock>
@@ -8,3 +15,6 @@
                  [pageSizeOptions]="[5, 10, 25, products.length]">
   </mat-paginator>
 </div>
+
+
+

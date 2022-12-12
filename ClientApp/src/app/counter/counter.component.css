@@ -11,3 +11,6 @@
   align-items: baseline;
   flex-direction: column;
 }
+.center-me {
+  margin: 30% auto;
+}

@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Market, MarketService, ProductInStock} from "../market.service";
+import {Market, MarketProductDeliver, MarketService, ProductDeliver, ProductInStock} from "../market.service";
 import {PageEvent} from "@angular/material/paginator";
 
 @Component({
@@ -14,7 +14,7 @@ export class CounterComponent implements OnInit, OnChanges{
   currentPage = 1;
   currentPageSize = 5;
   currentProducts: ProductInStock[] = [];
-  constructor(private marketService: MarketService){
+  constructor(public marketService: MarketService){
 
   }
 
@@ -24,7 +24,7 @@ export class CounterComponent implements OnInit, OnChanges{
       if(this.market != null){
         this.products = this.market.marketProductInStock.products;
       }
-      this.updateCurrentProducts();
+      setTimeout(()=>this.updateCurrentProducts(), 1000);
     });
   }
 
@@ -53,4 +53,11 @@ export class CounterComponent implements OnInit, OnChanges{
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
+
+
+
+}
+
+export interface ModalDeliver{
+  productDeliver: ProductDeliver
 }

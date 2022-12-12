@@ -1,18 +1,19 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {ProgressSpinnerMode} from "@angular/material/progress-spinner";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarketService {
+
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl:string) {
   }
 
   GetMarketModel(){
       return this.http.get<Market>('https://localhost:7000/' + 'products')
   }
-
 
 }
 

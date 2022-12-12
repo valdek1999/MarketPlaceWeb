@@ -14,7 +14,7 @@ export class FetchDataComponent implements OnInit, OnChanges{
   currentPage = 1;
   currentPageSize = 5;
   currentProducts: RepairParts[] = [];
-  constructor(private marketService: MarketService){
+  constructor(public marketService: MarketService){
 
   }
 
@@ -24,7 +24,7 @@ export class FetchDataComponent implements OnInit, OnChanges{
       if(this.market != null){
         this.products = this.market.marketRepairParts.products;
       }
-      this.updateCurrentProducts();
+      setTimeout(()=>this.updateCurrentProducts(), 1000);
     });
   }
 

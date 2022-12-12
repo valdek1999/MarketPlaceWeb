@@ -14,21 +14,23 @@ export class HomeComponent implements OnInit, OnChanges{
   currentPage = 1;
   currentPageSize = 5;
   currentProducts: ProductDeliver[] = [];
-  constructor(private marketService: MarketService){
-
+  constructor(public marketService: MarketService){
   }
 
   ngOnInit(): void {
     this.marketService.GetMarketModel().subscribe(market =>{
-      this.market = market
-      if(this.market != null){
-        this.products = this.market.marketProductDeliver.products;
-      }
-      this.updateCurrentProducts();
-    });
+        this.market = market
+        if(this.market != null){
+          this.products = this.market.marketProductDeliver.products;
+        }
+      },
+      ()=>{},
+      ()=> setTimeout(()=>this.updateCurrentProducts(), 1000)
+      );
   }
 
   ngOnChanges(): void {
+
   }
 
   updatePage(page: PageEvent){
