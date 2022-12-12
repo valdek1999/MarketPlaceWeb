@@ -1,36 +1,34 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Market, MarketService, ProductDeliver} from "../market.service";
+import {Market, MarketService, ProductInStock, RepairParts} from "../market.service";
 import {PageEvent} from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['../counter/counter.component.css']
+  selector: 'app-repairs-page',
+  templateUrl: './fetch-data.component.html',
+  styleUrls: ['../products-in-stock-page/counter.component.css']
 })
-export class HomeComponent implements OnInit, OnChanges{
+export class FetchDataComponent implements OnInit, OnChanges{
   market!: Market
 
-  @Input() products!: ProductDeliver[];
+  @Input() products!: RepairParts[];
   currentPage = 1;
   currentPageSize = 5;
-  currentProducts: ProductDeliver[] = [];
+  currentProducts: RepairParts[] = [];
   constructor(public marketService: MarketService){
+
   }
 
   ngOnInit(): void {
     this.marketService.GetMarketModel().subscribe(market =>{
-        this.market = market
-        if(this.market != null){
-          this.products = this.market.marketProductDeliver.products;
-        }
-      },
-      ()=>{},
-      ()=> setTimeout(()=>this.updateCurrentProducts(), 1000)
-      );
+      this.market = market
+      if(this.market != null){
+        this.products = this.market.marketRepairParts.products;
+      }
+      setTimeout(()=>this.updateCurrentProducts(), 1000);
+    });
   }
 
   ngOnChanges(): void {
-
   }
 
   updatePage(page: PageEvent){

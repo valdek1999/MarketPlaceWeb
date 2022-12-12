@@ -6,13 +6,13 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { HomeComponent } from './deliver-page/home.component';
+import { CounterComponent } from './products-in-stock-page/counter.component';
+import { FetchDataComponent } from './repairs-page/fetch-data.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductDeliverComponent } from './home/product-deliver/product-deliver.component';
-import { ProductInStockComponent } from './counter/product-in-stock/product-in-stock.component';
-import { ProductRepairComponent } from './fetch-data/product-repair/product-repair.component';
+import { ProductDeliverComponent } from './deliver-page/product-deliver/product-deliver.component';
+import { ProductInStockComponent } from './products-in-stock-page/product-in-stock/product-in-stock.component';
+import { ProductRepairComponent } from './repairs-page/product-repair/product-repair.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
@@ -20,7 +20,7 @@ import {MatButton} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { DeliverModalComponent } from './home/deliver-modal/deliver-modal.component';
+import { DeliverModalComponent } from './deliver-page/deliver-modal/deliver-modal.component';
 import {Dialog, DIALOG_DATA} from "@angular/cdk/dialog";
 import {MatDialogModule} from "@angular/material/dialog";
 
@@ -42,8 +42,8 @@ import {MatDialogModule} from "@angular/material/dialog";
         FormsModule,
         RouterModule.forRoot([
             {path: '', component: HomeComponent, pathMatch: 'full'},
-            {path: 'counter', component: CounterComponent},
-            {path: 'fetch-data', component: FetchDataComponent},
+            {path: 'products-in-stock-page', component: CounterComponent},
+            {path: 'repairs-page', component: FetchDataComponent},
         ]),
         BrowserAnimationsModule,
         MatCardModule,

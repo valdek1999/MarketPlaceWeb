@@ -1,34 +1,36 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Market, MarketService, ProductDeliver, ProductInStock} from "../market.service";
+import {Market, MarketService, ProductDeliver} from "../market.service";
 import {PageEvent} from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-counter-component',
-  templateUrl: './counter.component.html',
-  styleUrls: ['./counter.component.css']
+  selector: 'app-deliver-page',
+  templateUrl: './home.component.html',
+  styleUrls: ['../products-in-stock-page/counter.component.css']
 })
-export class CounterComponent implements OnInit, OnChanges{
+export class HomeComponent implements OnInit, OnChanges{
   market!: Market
 
-  @Input() products!: ProductInStock[];
+  @Input() products!: ProductDeliver[];
   currentPage = 1;
   currentPageSize = 5;
-  currentProducts: ProductInStock[] = [];
+  currentProducts: ProductDeliver[] = [];
   constructor(public marketService: MarketService){
-
   }
 
   ngOnInit(): void {
     this.marketService.GetMarketModel().subscribe(market =>{
-      this.market = market
-      if(this.market != null){
-        this.products = this.market.marketProductInStock.products;
-      }
-      setTimeout(()=>this.updateCurrentProducts(), 1000);
-    });
+        this.market = market
+        if(this.market != null){
+          this.products = this.market.marketProductDeliver.products;
+        }
+      },
+      ()=>{},
+      ()=> setTimeout(()=>this.updateCurrentProducts(), 1000)
+      );
   }
 
   ngOnChanges(): void {
+
   }
 
   updatePage(page: PageEvent){
@@ -39,7 +41,7 @@ export class CounterComponent implements OnInit, OnChanges{
     }
   }
 
-  updateCurrentProducts(){
+  updateCurrentProducts():void{
     var start = (this.currentPage-1)*this.currentPageSize
     var end = start + this.currentPageSize
     if(end > this.products.length){
@@ -53,11 +55,4 @@ export class CounterComponent implements OnInit, OnChanges{
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
-
-
-
-}
-
-export interface ModalDeliver{
-  productDeliver: ProductDeliver
 }

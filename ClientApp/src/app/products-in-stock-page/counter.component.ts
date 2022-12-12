@@ -1,19 +1,19 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Market, MarketService, ProductInStock, RepairParts} from "../market.service";
+import {Market, MarketService, ProductDeliver, ProductInStock} from "../market.service";
 import {PageEvent} from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-fetch-data',
-  templateUrl: './fetch-data.component.html',
-  styleUrls: ['../counter/counter.component.css']
+  selector: 'app-products-in-stock-page-component',
+  templateUrl: './counter.component.html',
+  styleUrls: ['./counter.component.css']
 })
-export class FetchDataComponent implements OnInit, OnChanges{
+export class CounterComponent implements OnInit, OnChanges{
   market!: Market
 
-  @Input() products!: RepairParts[];
+  @Input() products!: ProductInStock[];
   currentPage = 1;
   currentPageSize = 5;
-  currentProducts: RepairParts[] = [];
+  currentProducts: ProductInStock[] = [];
   constructor(public marketService: MarketService){
 
   }
@@ -22,7 +22,7 @@ export class FetchDataComponent implements OnInit, OnChanges{
     this.marketService.GetMarketModel().subscribe(market =>{
       this.market = market
       if(this.market != null){
-        this.products = this.market.marketRepairParts.products;
+        this.products = this.market.marketProductInStock.products;
       }
       setTimeout(()=>this.updateCurrentProducts(), 1000);
     });
@@ -39,7 +39,7 @@ export class FetchDataComponent implements OnInit, OnChanges{
     }
   }
 
-  updateCurrentProducts():void{
+  updateCurrentProducts(){
     var start = (this.currentPage-1)*this.currentPageSize
     var end = start + this.currentPageSize
     if(end > this.products.length){
@@ -53,4 +53,11 @@ export class FetchDataComponent implements OnInit, OnChanges{
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
+
+
+
+}
+
+export interface ModalDeliver{
+  productDeliver: ProductDeliver
 }
