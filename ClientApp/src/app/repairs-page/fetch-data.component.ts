@@ -12,7 +12,7 @@ export class FetchDataComponent implements OnInit, OnChanges{
 
   @Input() products!: RepairParts[];
   currentPage = 1;
-  currentPageSize = 5;
+  currentPageSize = 3;
   currentProducts: RepairParts[] = [];
   constructor(public marketService: MarketService){
 

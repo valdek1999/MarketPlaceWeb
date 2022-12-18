@@ -1,11 +1,11 @@
 <mat-card class="card">
   <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
+    <div mat-card-avatar class="header-image" #image></div>
     <div class="size_name">
       <mat-card-title>{{GetNormalString(productDeliver.name)}}</mat-card-title>
     </div>
   </mat-card-header>
-  <img mat-card-image src="https://cdn.dribbble.com/users/900374/screenshots/5315324/gpu_mining_2_1x.gif" alt="Photo of a Shiba Inu">
+  <img class="img-size" mat-card-image [src]="link" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <mat-chip-list class="mat-chip-list-stacked" aria-label="Fish selection">
       <mat-chip>Состояние: {{productDeliver.state}}</mat-chip>

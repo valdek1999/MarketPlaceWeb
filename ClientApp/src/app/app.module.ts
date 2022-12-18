@@ -23,6 +23,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { DeliverModalComponent } from './deliver-page/deliver-modal/deliver-modal.component';
 import {Dialog, DIALOG_DATA} from "@angular/cdk/dialog";
 import {MatDialogModule} from "@angular/material/dialog";
+import { ProductInStockModalComponent } from './products-in-stock-page/product-in-stock-modal/product-in-stock-modal.component';
+import { ProductRepairModalComponent } from './repairs-page/product-repair-modal/product-repair-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     ProductDeliverComponent,
     ProductInStockComponent,
     ProductRepairComponent,
-    DeliverModalComponent
+    DeliverModalComponent,
+    ProductInStockModalComponent,
+    ProductRepairModalComponent
   ],
     imports: [
         BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit, OnChanges{
 
   @Input() products!: ProductDeliver[];
   currentPage = 1;
-  currentPageSize = 5;
+  currentPageSize = 3;
   currentProducts: ProductDeliver[] = [];
   constructor(public marketService: MarketService){
   }

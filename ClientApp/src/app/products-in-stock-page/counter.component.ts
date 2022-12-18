@@ -12,7 +12,7 @@ export class CounterComponent implements OnInit, OnChanges{
 
   @Input() products!: ProductInStock[];
   currentPage = 1;
-  currentPageSize = 5;
+  currentPageSize = 3;
   currentProducts: ProductInStock[] = [];
   constructor(public marketService: MarketService){
 

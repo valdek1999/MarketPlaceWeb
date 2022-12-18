@@ -27,3 +27,8 @@
 .size_name{
   height: 59px;
 }
+
+.img-size{
+  min-height: 300px;
+  max-height: 300px;
+}

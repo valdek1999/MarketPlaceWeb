@@ -1,17 +1,25 @@
-<h1>{{data.productDeliver.name}}</h1>
-<div>
-  <ul>
-    <li>
-      Стоимость: {{data.productDeliver.priceUsd}} $ | {{data.productDeliver.priceRub}} ₽
-    </li>
-    <li>
-      HashRate: {{data.productDeliver.hashRate}}
-    </li>
-    <li>
-      Состояние: {{data.productDeliver.state}}
-    </li>
-  </ul>
-  <p>Приобрести комплектующие можно: </p>
-  <p>ЛС Telegramm: @trifolia</p>
-  <p>Номер: +7(910)970-30-10</p>
-</div>
+<mat-card-content>
+  <div class="box-info">
+    <mat-card-title>{{data.productDeliver.name}}</mat-card-title>
+    <div>
+      <img mat-card-image class="product-image" src="https://cdn.dribbble.com/users/900374/screenshots/5315324/gpu_mining_2_1x.gif">
+    </div>
+    <div class="sub-info">
+      <p>Приобрести комплектующие можно: </p>
+      <p>ЛС Telegramm: @trifolia</p>
+      <p>Номер: +7(910)970-30-10</p>
+    </div>
+    <mat-chip-list aria-label="Dog selection">
+      <mat-chip>
+        Стоимость:<br />{{data.productDeliver.priceUsd}} $ | {{data.productDeliver.priceRub}} ₽
+      </mat-chip>
+      <mat-chip color="primary">
+        HashRate:<br />{{data.productDeliver.hashRate}}
+      </mat-chip>
+      <mat-chip color="accent">
+        Состояние:<br />{{data.productDeliver.state}}</mat-chip>
+    </mat-chip-list>
+    <a hidden href="http://t.me/anttradecom" #linkTelegram></a>
+    <button (click)="linkTelegram.click()"  class="pay_button" mat-flat-button color="warn">Приобрести товар в телеграм канале</button>
+  </div>
+</mat-card-content>

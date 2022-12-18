@@ -4,3 +4,45 @@
   border-radius: 8px;
   padding: 8px 16px;
 }
+
+
+.product-card-top__buy{
+  border-radius: 25px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  margin-bottom: 24px;
+  min-height: 140px;
+  padding: 16px 12px;
+}
+
+.mat-standard-chip{
+  min-height: 51px;
+  max-width: 300px;
+  align-items: flex-start;
+}
+
+.pay_button{
+  width: 100%;
+}
+
+.box-info{
+  display: flex;
+  flex-direction: column;
+  /* column-gap: 334px; */
+  row-gap: 20px;
+  /* align-content: center; */
+  justify-content: center;
+  align-items: center
+}
+
+.sub-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.product-image{
+  max-width: 300px;
+  border-radius: 45px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+}
